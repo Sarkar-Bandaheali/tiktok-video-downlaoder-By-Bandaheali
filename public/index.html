@@ -4,16 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Video Downloader</title>
+  <title>VIP TikTok Video Downloader</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>TikTok Video Downloader</h1>
-    <input id="videoURL" type="text" placeholder="Enter TikTok Video URL" />
-    <button onclick="downloadVideo()">Download</button>
-    <div id="result"></div>
-  </div>
+  <header>
+    <div class="logo">
+      <h1>VIP TikTok Downloader</h1>
+      <p>Download your favorite TikTok videos in HD</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <input id="videoURL" type="text" placeholder="Enter TikTok Video URL" />
+      <button onclick="downloadVideo()">Download</button>
+    </div>
+
+    <div id="result" class="result-container"></div>
+  </main>
+
+  <footer>
+    <p>POWERED BY BANDAHEALI | All Rights Reserved © 2024</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
