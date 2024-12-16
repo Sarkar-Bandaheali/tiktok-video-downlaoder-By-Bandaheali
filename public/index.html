@@ -29,7 +29,48 @@
     <p>POWERED BY BANDAHEALI | All Rights Reserved © 2024</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Sarkar-MD
+    async function downloadVideo() {
+      const videoURL = document.getElementById('videoURL').value;
+      const resultContainer = document.getElementById('result');
+
+      // Clear previous results
+      resultContainer.innerHTML = '';
+
+      if (!videoURL) {
+        alert('Please enter a TikTok video URL.');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ videoURL }),
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+          resultContainer.innerHTML = `<p>${data.error}</p>`;
+        } else {
+          resultContainer.innerHTML = `
+            <h3>${data.title}</h3>
+            <p>Author: ${data.author}</p>
+            <img src="${data.cover}" alt="Video Cover" width="300"/>
+            <p><strong>Download Options:</strong></p>
+            <a href="${data.hdVideo}" target="_blank" download>Download HD Video</a><br>
+            <a href="${data.wmVideo}" target="_blank" download>Download Watermarked Video</a><br>
+            <a href="${data.sound}" target="_blank" download>Download Audio</a>
+          `;
+        }
+      } catch (err) {
+        console.error(err);
+        resultContainer.innerHTML = '<p>Download failed! Please try again later.</p>';
+      }
+    }
+    // POWERED BY BANDAHEALI
+  </script>
 </body>
 </html>
-<!-- POWERED BY BANDAHEALI -->
